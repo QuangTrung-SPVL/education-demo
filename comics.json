@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "tap-1-newton",
+    "title": "Tập 1: Các định luật Newton",
+    "cover": "images/comics/cover-tap-1.jpg",
+    "topic": "co-hoc"
+  },
+  {
+    "slug": "tap-2-nang-luong",
+    "title": "Tập 2: Năng lượng và Công",
+    "cover": "images/comics/cover-tap-2.jpg",
+    "topic": "nang-luong"
+  },
+  {
+    "slug": "tap-3-dong-luong",
+    "title": "Tập 3: Động lượng & Va chạm",
+    "cover": "images/comics/cover-tap-3.jpg",
+    "topic": "dong-luong"
+  },
+  {
+    "slug": "tap-4-chuyen-dong-tron",
+    "title": "Tập 4: Chuyển động tròn",
+    "cover": "images/comics/cover-tap-4.jpg",
+    "topic": "co-hoc"
+  },
+  {
+    "slug": "tap-5-dien-hoc",
+    "title": "Tập 5: Dòng điện không đổi",
+    "cover": "images/comics/cover-tap-5.jpg",
+    "topic": "dien-hoc"
+  },
+  {
+    "slug": "tap-6-ap-suat",
+    "title": "Tập 6: Áp suất chất lỏng",
+    "cover": "images/comics/cover-tap-6.jpg",
+    "topic": "ap-suat"
+  }
+]

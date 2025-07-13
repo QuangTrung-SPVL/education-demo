@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Truyện tranh Vật Lý | PhysicsEducationSPV</title>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- CSS Giao diện thư viện truyện -->
+  <link rel="stylesheet" href="comics.css" />
+</head>
+<body>
+  <!-- ===== NAVBAR TỐI GIẢN ===== -->
+  <nav class="top-nav">
+    <div class="logo-container">
+      <a href="index.html" title="Về trang chủ">
+        <img src="logo/logowebs.png" alt="PhysicsEducationSPV Logo" />
+      </a>
+    </div>
+
+    <div class="menu-items-container">
+      <a class="nav-item" href="index.html">Trang chủ</a>
+      <a class="nav-item active" href="comics.html">Truyện tranh</a>
+      <a class="nav-item" href="lectures.html">Bài giảng</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO HEADER ===== -->
+  <header class="page-hero">
+    <h1>Thư viện Truyện tranh Khoa học</h1>
+    <p>Học Vật Lý qua những câu chuyện minh họa sinh động và dễ hiểu.</p>
+
+    <!-- Ô tìm kiếm & Bộ lọc theo chủ đề -->
+    <div class="filter-bar">
+      <input type="text" id="search-input" placeholder="Tìm truyện…" />
+      <select id="topic-filter">
+        <option value="all">Tất cả chủ đề</option>
+        <option value="co-hoc">Cơ học</option>
+        <option value="dong-luc">Động lực học</option>
+        <option value="nang-luong">Năng lượng & Công</option>
+        <option value="dien-hoc">Điện học</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- ===== GALLERY TRUYỆN (sẽ được render tự động) ===== -->
+  <main class="content-container">
+    <div id="gallery" class="comic-gallery grid-3"></div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="main-footer">
+    *mọi tài liệu đều thuộc bản quyền của nhóm chúng tôi và dùng để cung cấp cho học sinh hoàn toàn miễn phí. Nghiêm cấm mọi hành vi lợi dụng để mua bán.*
+  </footer>
+
+  <!-- ===== DATA & SCRIPT ===== -->
+  <script src="comics.js"></script>
+</body>
+</html>

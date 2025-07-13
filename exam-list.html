@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhysicsEducationSPV | Đề thi</title>
+
+  <!-- Font Awesome & CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="exam-list.css" />
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="top-nav">
+    <div class="logo-container">
+      <a href="index.html" title="Trang chủ"><img src="logo/logowebs.png" alt="Logo" /></a>
+    </div>
+    <div class="menu-items-container">
+      <a class="nav-item" href="lectures.html">Bài giảng</a>
+      <a class="nav-item" href="experiments.html">Thí nghiệm</a>
+      <a class="nav-item" href="exercises.html">Bài tập</a>
+      <a class="nav-item active" href="exams.html">Đề thi</a>
+      <a class="nav-item" href="comics.html">Truyện tranh</a>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE CONTAINER ===== -->
+  <div class="page-container">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sticky-nav">
+      <h3>Danh mục Đề thi</h3>
+      <ul>
+        <li><a href="#on-tap-chuong" data-label="Mục 1:"><span>Ôn tập chương</span></a></li>
+        <li><a href="#de-giua-ky" data-label="Mục 2:"><span>Đề thi giữa kỳ</span></a></li>
+        <li><a href="#de-hoc-ky" data-label="Mục 3:"><span>Đề thi học kỳ</span></a></li>
+      </ul>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+      <h1>Ngân hàng Đề thi</h1>
+      <p>Thử sức với các đề thi được biên soạn kỹ lưỡng để ôn tập và chuẩn bị cho các kỳ thi quan trọng.</p>
+
+      <!-- === MỤC 1 === -->
+      <section id="on-tap-chuong" class="topic-section">
+        <div class="section-header">
+          <h2>1. Ôn tập theo chương</h2>
+          <span class="last-updated">Cập nhật: 13/07/2025</span>
+        </div>
+
+        <div class="exam-list">
+          <div class="exam-item ready">
+            <i class="fas fa-file-lines file-icon"></i>
+            <span class="exam-name">Đề ôn tập Chương 1: Động học</span>
+            <a href="https://azota.vn/de-thi/abc123" class="action-button" target="_blank">Làm bài</a>
+          </div>
+          <div class="exam-item pending">
+            <i class="fas fa-file-lines file-icon"></i>
+            <span class="exam-name">Đề ôn tập Chương 2</span>
+            <a href="#" class="action-button disabled">Chưa có</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- === MỤC 2 === -->
+      <section id="de-giua-ky" class="topic-section">
+        <div class="section-header">
+          <h2>2. Đề thi Giữa kỳ</h2>
+          <span class="last-updated">Cập nhật: 13/07/2025</span>
+        </div>
+
+        <div class="exam-list">
+          <div class="exam-item pending">
+            <i class="fas fa-file-lines file-icon"></i>
+            <span class="exam-name">Đề Giữa kỳ HK1</span>
+            <a href="#" class="action-button disabled">Chưa có</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- === MỤC 3 === -->
+      <section id="de-hoc-ky" class="topic-section">
+        <div class="section-header">
+          <h2>3. Đề thi Học kỳ</h2>
+          <span class="last-updated">Cập nhật: 13/07/2025</span>
+        </div>
+
+        <div class="exam-list">
+          <div class="exam-item pending">
+            <i class="fas fa-file-lines file-icon"></i>
+            <span class="exam-name">Đề Học kỳ HK1</span>
+            <a href="#" class="action-button disabled">Chưa có</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="main-footer">
+    *Các đề thi thuộc nhóm chúng tôi, miễn phí cho học sinh – nghiêm cấm mua bán.*
+  </footer>
+
+  <!-- ===== SCRIPT ===== -->
+  <script src="exam-list.js"></script>
+</body>
+</html>

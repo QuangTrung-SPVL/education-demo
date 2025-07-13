@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thí nghiệm Vật Lý - PhysicsEducationSPV</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="experiments.css" />
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="logo-container">
+      <img src="logo/logowebs.png" alt="Logo" />
+    </div>
+    <div class="menu-items-container">
+      <a href="index.html" class="nav-item">Trang chủ</a>
+      <a href="comics.html" class="nav-item">Truyện tranh</a>
+      <a href="experiments.html" class="nav-item active">Thí nghiệm</a>
+      <a href="lectures.html" class="nav-item">Bài giảng</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Thư viện Video Thí nghiệm</h1>
+    <p>Quan sát các hiện tượng vật lý qua video trực quan và sinh động.</p>
+    <nav class="quick-nav">
+      <ul>
+        <li><a href="#dong-hoc">Động học</a></li>
+        <li><a href="#dong-luc-hoc">Động lực học</a></li>
+        <li><a href="#nang-luong">Năng lượng</a></li>
+        <li><a href="#dong-luong">Động lượng</a></li>
+        <li><a href="#chuyen-dong-tron">Chuyển động tròn</a></li>
+        <li><a href="#vat-ran">Vật rắn & Chất lỏng</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-container">
+    <!-- ========== TEMPLATE PHẦN ========== -->
+    <!-- Mỗi section dưới được tạo sẵn 5 slot cho thí nghiệm. -->
+
+    <!-- Động học -->
+    <section id="dong-hoc" class="topic-section">
+      <h2>Phần 1: Động học</h2>
+      <hr />
+      <div class="video-grid">
+        <!-- Slot 1 -->
+        <div class="video-item">
+          <div class="video-embed-container">
+            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" ...></iframe> -->
+          </div>
+          <h3>Thí nghiệm 1.1: [Tên thí nghiệm]</h3>
+          <p>Mô tả ngắn về hiện tượng hoặc mục đích thí nghiệm.</p>
+        </div>
+        <!-- Lặp lại 4 slot nữa -->
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 1.2</h3><p>...</p></div>
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 1.3</h3><p>...</p></div>
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 1.4</h3><p>...</p></div>
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 1.5</h3><p>...</p></div>
+      </div>
+    </section>
+
+    <!-- Lặp lại theo format trên cho động lực học, năng lượng, động lượng, chuyển động tròn, vật rắn & chất lỏng -->
+
+    <section id="dong-luc-hoc" class="topic-section">
+      <h2>Phần 2: Động lực học</h2><hr />
+      <div class="video-grid">
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 2.1</h3><p>...</p></div>
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 2.2</h3><p>...</p></div>
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 2.3</h3><p>...</p></div>
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 2.4</h3><p>...</p></div>
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 2.5</h3><p>...</p></div>
+      </div>
+    </section>
+
+    <!-- Tương tự cho các phần sau... -->
+    <section id="nang-luong" class="topic-section">
+      <h2>Phần 3: Năng lượng. Công. Công suất</h2><hr />
+      <div class="video-grid">
+        <div class="video-item"><div class="video-embed-container"><!-- --></div><h3>Thí nghiệm 3.1</h3><p>...</p></div>
+        ... (tổng 5 slot)
+      </div>
+    </section>
+
+    <section id="dong-luong" class="topic-section">
+      <h2>Phần 4: Động lượng</h2><hr />
+      <div class="video-grid">
+        ...
+      </div>
+    </section>
+
+    <section id="chuyen-dong-tron" class="topic-section">
+      <h2>Phần 5: Chuyển động tròn</h2><hr />
+      <div class="video-grid">
+        ...
+      </div>
+    </section>
+
+    <section id="vat-ran" class="topic-section">
+      <h2>Phần 6: Biến dạng vật rắn. Áp suất chất lỏng</h2><hr />
+      <div class="video-grid">
+        ...
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 PhysicsEducationSPV. All rights reserved.</p>
+  </footer>
+
+  <script src="experiments.js"></script>
+</body>
+</html>

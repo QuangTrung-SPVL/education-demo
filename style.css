@@ -1,0 +1,106 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Container toàn trang */
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #dcdcdc; /* xám nhẹ bên phải */
+}
+
+/* Thanh bên trái */
+.sidebar {
+    background-color: #605f62; /* màu xám đậm bên trái */
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.class-level {
+    font-size: 72px;
+    color: white;
+    font-family: 'Georgia', serif;
+    text-shadow: 1px 1px #333;
+}
+
+/* Khu vực chính */
+.main-content {
+    width: 80%;
+    position: relative;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Khối hero */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Khối văn bản */
+.hero-text h1 {
+    font-size: 64px;
+    font-family: "Georgia", serif;
+    color: #4a4a4a;
+    text-shadow: 1px 1px #aaa;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    font-style: italic;
+    font-family: "Times New Roman", serif;
+    color: #333;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* Dòng giới thiệu nhóm tác giả */
+.hero-text .subtext {
+    font-size: 11px;
+    font-style: italic;
+    color: #555;
+    margin-top: 10px;
+    font-family: "Times New Roman", serif;
+    margin-top: 10px;
+    line-height: 0.5;
+}
+
+/* Hình minh họa */
+.hero-image img {
+    max-width: 500px;
+    height: auto;
+    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* Nút bắt đầu */
+.cta-container {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.cta-button {
+    padding: 10px 24px;
+    background-color: #6d6d6d;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-family: "Times New Roman", serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #4c4c4c;
+    transform: translateY(-2px);
+}

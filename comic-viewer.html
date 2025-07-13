@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đọc truyện – PhysicsEducationSPV</title>
+
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Style riêng cho viewer -->
+  <link rel="stylesheet" href="comic-viewer.css" />
+  <!-- Bạn vẫn dùng Times New Roman là font mặc định trong CSS toàn site -->
+</head>
+<body class="viewer-mode">
+  <!-- ===== COMIC VIEWER WRAPPER ===== -->
+  <main class="comic-viewer">
+    <div id="comicStrip" class="comic-strip"><!-- ảnh trang sẽ được JS render --></div>
+  </main>
+
+  <!-- ===== CONTROL BAR ===== -->
+  <div class="viewer-controls">
+    <a href="comics.html" class="control-button exit-button" title="Thoát (ESC)">
+      <i class="fas fa-times"></i>
+    </a>
+
+    <button class="control-button prev-button" id="btnPrev" title="Trang trước (←)">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="control-button next-button" id="btnNext" title="Trang sau (→)">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <button class="control-button fs-button" id="btnFS" title="Toàn màn hình (F)">
+      <i class="fas fa-expand"></i>
+    </button>
+
+    <div class="page-indicator">
+      <span id="currentPage">0</span> / <span id="totalPages">0</span>
+    </div>
+  </div>
+
+  <!-- ===== THUMBNAIL NAVIGATOR ===== -->
+  <div class="thumbnail-navigator" id="thumbNav">
+    <div class="thumbnail-strip" id="thumbStrip"><!-- thumbs render --></div>
+  </div>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+  // ===========================================================
+  //  COMIC VIEWER SCRIPT (inline) – có thể tách thành comic-viewer.js
+  // ===========================================================
+  (function(){
+    const params  = new URLSearchParams(location.search);
+    const slug    = params.get('slug');            // ví dụ tap-1-newton
+    const viewer  = document.getElementById('comicStrip');
+    const thumbs  = document.getElementById('thumbStrip');
+    const curSpan = document.getElementById('currentPage');
+    const totalSpan = document.getElementById('totalPages');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const btnFS   = document.getElementById('btnFS');
+
+    if(!slug){
+      alert('Thiếu tham số truyện!');
+      location.href='comics.html';
+    }
+
+    /* ---------- 1. Lấy meta pages ---------- */
+    // ĐƠN GIẢN: giả sử có file meta JSON cùng thư mục: /comics/<slug>/meta.json
+    // Nếu không có, bạn có thể hard-code totalPages ngay dưới.
+    const metaURL = `comics/${slug}/meta.json`;
+    fetch(metaURL)
+      .then(r=>r.ok ? r.json() : Promise.reject('no meta'))
+      .then(meta => initViewer(meta.pages))
+      .catch(()=>{
+        // fallback: cho 20 trang mặc định
+        console.warn('Không tìm thấy meta.json, dùng mặc định 20 trang');
+        initViewer(20);
+      });
+
+    /* ---------- 2. Khởi tạo viewer ---------- */
+    function initViewer(totalPages){
+      totalSpan.textContent = totalPages;
+      // Render ảnh & thumbnail
+      for(let i=1;i<=totalPages;i++){
+        const img = document.createElement('img');
+        img.dataset.src = `comics/${slug}/page${i}.jpg`; // lazy src
+        img.alt = `${slug} – trang ${i}`;
+        img.className = 'comic-page';
+        viewer.appendChild(img);
+
+        // thumbnail
+        const t = document.createElement('img');
+        t.dataset.page = i;
+        t.src = `comics/${slug}/thumb/page${i}.jpg`; // ảnh thumb kích thước nhỏ
+        t.className='thumb';
+        thumbs.appendChild(t);
+      }
+
+      // Lazy load ảnh khi viewport gần đến
+      const ioImg = new IntersectionObserver((ents,ob)=>{
+        ents.forEach(e=>{
+          if(e.isIntersecting){
+            const img = e.target;
+            if(!img.src) img.src = img.dataset.src;
+            ob.unobserve(img);
+          }
+        });
+      },{root:null,threshold:0.1});
+      document.querySelectorAll('.comic-page').forEach(p=>ioImg.observe(p));
+
+      // Scroll snap
+      viewer.scrollTo({left:0,behavior:'instant'});
+      updatePageIndicator();
+    }
+
+    /* ---------- 3. Chức năng chuyển trang ---------- */
+    function scrollToPage(page){
+      const width = viewer.clientWidth;
+      viewer.scrollTo({left:(page-1)*width, behavior:'smooth'});
+    }
+
+    btnPrev.onclick = ()=>{ currentPage()>1 && scrollToPage(currentPage()-1); };
+    btnNext.onclick = ()=>{ currentPage()<totalPages() && scrollToPage(currentPage()+1); };
+
+    document.addEventListener('keydown', e=>{
+      if(e.key==='ArrowLeft') btnPrev.click();
+      if(e.key==='ArrowRight') btnNext.click();
+      if(e.key==='Escape') location.href='comics.html';
+      if(e.key.toLowerCase()==='f') toggleFullscreen();
+    });
+
+    thumbs.addEventListener('click', e=>{
+      const t = e.target.closest('.thumb');
+      if(t){ scrollToPage(+t.dataset.page); }
+    });
+
+    // swipe gesture for touch
+    let startX=0;
+    viewer.addEventListener('touchstart',e=>{ startX=e.touches[0].clientX });
+    viewer.addEventListener('touchend',e=>{
+      const dx = e.changedTouches[0].clientX - startX;
+      if(Math.abs(dx)>50){ dx<0 ? btnNext.click() : btnPrev.click(); }
+    });
+
+    /* ---------- 4. Fullscreen ---------- */
+    function toggleFullscreen(){
+      if(!document.fullscreenElement){ document.documentElement.requestFullscreen(); }
+      else { document.exitFullscreen(); }
+    }
+    btnFS.onclick = toggleFullscreen;
+
+    /* ---------- 5. Theo dõi cuộn để cập nhật trang ---------- */
+    viewer.addEventListener('scroll', debounce(updatePageIndicator, 100));
+
+    function updatePageIndicator(){
+      const page = currentPage();
+      curSpan.textContent = page;
+      // lưu vào localStorage
+      localStorage.setItem(`last-${slug}`, page);
+    }
+
+    function currentPage(){
+      return Math.round(viewer.scrollLeft / viewer.clientWidth) + 1;
+    }
+    function totalPages(){ return +totalSpan.textContent; }
+
+    /* ---------- 6. Khôi phục trang đã đọc ---------- */
+    const saved = +localStorage.getItem(`last-${slug}`);
+    if(saved && saved>1) scrollToPage(saved);
+
+    /* ---------- 7. Helper debounce ---------- */
+    function debounce(fn,delay){ let t; return(...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a),delay);} }
+  })();
+  </script>
+</body>
+</html>
